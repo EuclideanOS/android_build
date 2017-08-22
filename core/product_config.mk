@@ -174,7 +174,6 @@ all_product_configs := $(call get-product-makefiles,\
     $(SRC_TARGET_DIR)/product/AndroidProducts.mk)
 else
  ifneq ($(CUSTOM_BUILD),)
-    $(call import-products, vendor/eucos/products/$(CUSTOM_BUILD).mk)
     all_product_configs := vendor/eucos/products/$(CUSTOM_BUILD).mk
   else
     # Read in all of the product definitions specified by the AndroidProducts.mk
