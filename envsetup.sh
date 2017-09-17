@@ -663,10 +663,6 @@ function lunch()
     fi
 
     check_product $product
-    TARGET_PRODUCT=$product \
-    TARGET_BUILD_VARIANT=$variant \
-    TARGET_PLATFORM_VERSION=$version \
-    build_build_var_cache
     if [ $? -ne 0 ]
     then
 	    # If we can't find a product, try to grab it from our github
@@ -678,6 +674,10 @@ function lunch()
     else
         build/tools/roomservice.py $product true
     fi
+    TARGET_PRODUCT=$product \
+    TARGET_BUILD_VARIANT=$variant \
+    TARGET_PLATFORM_VERSION=$version \
+    build_build_var_cache
     if [ $? -ne 0 ]
     then
         return 1
