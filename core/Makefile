@@ -267,6 +267,7 @@ endif
 	$(hide) TARGET_BUILD_TYPE="$(TARGET_BUILD_VARIANT)" \
 			TARGET_BUILD_FLAVOR="$(TARGET_BUILD_FLAVOR)" \
 			TARGET_DEVICE="$(TARGET_DEVICE)" \
+			EUCOS_DEVICE="$(TARGET_DEVICE)" \
 			PRODUCT_NAME="$(TARGET_PRODUCT)" \
 			PRODUCT_BRAND="$(PRODUCT_BRAND)" \
 			PRODUCT_DEFAULT_LOCALE="$(call get-default-product-locale,$(PRODUCT_LOCALES))" \
@@ -2718,7 +2719,25 @@ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(CUSTOM_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(CUSTOM_TARGET_PACKAGE) > $(CUSTOM_TARGET_PACKAGE).md5sum
-	@echo -e "Package complete: $(CUSTOM_TARGET_PACKAGE)"
+	@echo -e ${CL_CYN}
+	@echo -e ""
+	@echo -e "                The"
+	@echo -e "                           Future"
+	@echo -e ""
+	@echo -e " ███████╗██╗   ██╗ ██████╗██╗     ██╗██████╗ ███████╗ █████╗ ███╗   ██╗     ██████╗ ███████╗ "
+	@echo -e " ██╔════╝██║   ██║██╔════╝██║     ██║██╔══██╗██╔════╝██╔══██╗████╗  ██║    ██╔═══██╗██╔════╝ "
+	@echo -e " █████╗  ██║   ██║██║     ██║     ██║██║  ██║█████╗  ███████║██╔██╗ ██║    ██║   ██║███████╗ "
+	@echo -e " ██╔══╝  ██║   ██║██║     ██║     ██║██║  ██║██╔══╝  ██╔══██║██║╚██╗██║    ██║   ██║╚════██║ "
+	@echo -e " ███████╗╚██████╔╝╚██████╗███████╗██║██████╔╝███████╗██║  ██║██║ ╚████║    ╚██████╔╝███████║ "
+	@echo -e " ╚══════╝ ╚═════╝  ╚═════╝╚══════╝╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝     ╚═════╝ ╚══════╝ "
+	@echo -e ""
+	@echo -e "                                       Is"
+	@echo -e "                                                      Here"
+	@echo -e ""
+	@echo -e "ZIP: $(ZIP_LOCATION)"
+	@echo -e "SIZE: "`ls -hal $(CUSTOM_TARGET_PACKAGE) | cut -d ' ' -f 5`
+	@echo -e "MD5: "`cat $(CUSTOM_TARGET_PACKAGE).md5sum | cut -d ' ' -f 1`
+	@echo -e ${CL_RST}
 
 endif    # build_ota_package
 

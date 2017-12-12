@@ -482,6 +482,18 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   # Dump fingerprints
   script.Print("Target: %s" % target_fp)
 
+  script.Print("=======================================")
+  script.Print("|      ___ _   _  ___    ___  ___     |")
+  script.Print("|     | __| | | |/ __|  / _ \/ __|    |")
+  script.Print("|     | _|| |_| | (__  | (_) \__ \    |")
+  script.Print("|     |___|\___/ \___|  \___/|___/    |")
+  script.Print("|                                     |")
+  script.Print("=======================================")
+  script.Print("|    Android Version: 8.1.0 (Oreo)    |")
+  script.Print("=======================================")
+  script.Print("|        !THE FUTURE IS HERE!         |")
+  script.Print("=======================================")
+
   script.AppendExtra("ifelse(is_mounted(\"/system\"), unmount(\"/system\"));")
   device_specific.FullOTA_InstallBegin()
 
